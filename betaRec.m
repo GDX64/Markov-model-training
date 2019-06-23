@@ -44,7 +44,7 @@ for t = numPts-1:-1:1
         for j=2:nMinOne
             X = x(t+1,:)-means{j}';
             somatorio(j-1)=logTrans(i,j)+beta_ant(j) ...
-            - 0.5 * (X * invSig{i}) * X' + logDetVars2(i);
+            - 0.5 * (X * invSig{j}) * X' + logDetVars2(j);
         end
         betaT(i,t)=logsum(somatorio);
     end

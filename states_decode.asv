@@ -19,14 +19,28 @@ X=xgen(hmmE2);
 plotseq2(X,st,hmmE2);
 Px=logfwd(X,modelo);
 
-[decode, lx,ly]=states_decode(st);
-
 figure
 plot(st)
 title('Evolucion de los estados')
-text(lx,ly-0.2,decode,'Color', 'r', 'FontWeight','bold','FontSize',7)
 
 disp(['Viterbi= ' num2str(Pxvit)])
 disp(['P(X)= ' num2str(Px)])
 modelo.trans
 
+decode=[];
+legenda=[];
+for i=1:length(st)
+    
+    switch st(i)
+        case 2
+            if~(st(i-1)==2)
+               decode=[decode ' model 1 ->'];
+            end
+        case 5
+            if~(st(i-1)==5)
+               decode=[decode ' model 2 ->'];
+            end
+    end
+end
+
+decode

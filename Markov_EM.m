@@ -28,7 +28,7 @@ while abs(l(n-1)-l(n))>0.001
     gm=gammaRec(alphaT,betaT);
     l(n)=logfwd(X,modelo);
     xi=xiRec(X,modelo,alphaT,betaT);
-    xi(xi>0)=0;
+    %xi(xi>0)=0;
     
 %Paso M
 

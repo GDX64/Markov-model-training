@@ -25,7 +25,8 @@ end;
 
 stateSeq = stateSeq(2:(end-1));
 numStates = max(stateSeq);
-cmap = hsv(numStates-1);
+
+cmap = hsv(numStates);
 
 hy(1) = plot(x(:,1),x(:,2),'y');
 washold = ishold; hold on;
@@ -46,7 +47,9 @@ for i=2:numStates,
 end;
 
 if ~isempty(hmm),
-  for i=2:(numStates)
+  for i=2:(length(hmm.means)-1)
+      hmm.means{i}
+      hmm.vars{i}
     plotgaus(hmm.means{i},hmm.vars{i},cmap(i-1,:));
   end;
 end;
